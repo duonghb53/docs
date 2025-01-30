@@ -82,6 +82,7 @@ const sidebar = {
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
+        'build/chain-abstraction/omnibridge-js',
         'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]
