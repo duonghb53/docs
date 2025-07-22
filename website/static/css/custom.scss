@@ -1483,3 +1483,54 @@ div[class^='announcementBar_'] {
     transform: scale(1);
   }
 }
+
+// Remove the big white sidebar line
+// .theme-doc-sidebar-container::before { ... }
+
+// Tree-style vertical line for all nested sidebar items (level 2+)
+[class*="theme-doc-sidebar-item-category-level-"]:not(.theme-doc-sidebar-item-category-level-1) > ul.menu__list {
+  position: relative;
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(120, 120, 120, 0.5);
+}
+
+// Remove line for the last child to avoid overextending
+[class*="theme-doc-sidebar-item-category-level-"]:not(.theme-doc-sidebar-item-category-level-1) > ul.menu__list > li:last-child {
+  position: relative;
+}
+[class*="theme-doc-sidebar-item-category-level-"]:not(.theme-doc-sidebar-item-category-level-1) > ul.menu__list > li:last-child::after {
+  content: '';
+  position: absolute;
+  left: -0.75rem;
+  bottom: 0;
+  width: 2px;
+  height: calc(100% - 1.5rem);
+  background: #181b20; /* match sidebar bg to "erase" the line after last child */
+  z-index: 1;
+}
+
+// Remove the line from the very top sidebar menu
+.theme-doc-sidebar-menu {
+  border-left: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+// Restore the thin, subtle vertical line for all nested sidebar lists at every depth
+.menu__list:not(.theme-doc-sidebar-menu) {
+  position: relative;
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(120, 120, 120, 0.5);
+}
+
+// Remove the level-specific rules for .theme-doc-sidebar-item-category-level-N > .menu__list
+.theme-doc-sidebar-item-category-level-2 > .menu__list,
+.theme-doc-sidebar-item-category-level-3 > .menu__list,
+.theme-doc-sidebar-item-category-level-4 > .menu__list,
+.theme-doc-sidebar-item-category-level-5 > .menu__list {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+}

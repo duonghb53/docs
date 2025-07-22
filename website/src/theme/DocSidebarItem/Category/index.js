@@ -107,6 +107,7 @@ export default function DocSidebarItemCategory({
   activePath,
   level,
   index,
+  activeDescendant, // <-- new prop
   ...props
 }) {
   const {items, label, collapsible, className, href} = item;
@@ -154,6 +155,7 @@ export default function DocSidebarItemCategory({
         'menu__list-item',
         {
           'menu__list-item--collapsed': collapsed,
+          [styles.activeDescendant]: activeDescendant && level > 1, // <-- add class for active descendant at nested levels
         },
         className,
       )}>

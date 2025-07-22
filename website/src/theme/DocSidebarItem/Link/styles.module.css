@@ -1,3 +1,31 @@
 .menuExternalLink {
   align-items: center;
 }
+
+.activeDescendant {
+  position: relative;
+}
+
+.activeDescendant > .menu__link::before {
+  content: '';
+  position: absolute;
+  left: 1.25rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(120, 120, 120, 0.5);
+  border-radius: 2px;
+  opacity: 1;
+  z-index: 0;
+}
+
+/* Indent the line for deeper levels */
+.theme-doc-sidebar-item-link-level-2 .activeDescendant > .menu__link::before {
+  left: 1.25rem;
+}
+.theme-doc-sidebar-item-link-level-3 .activeDescendant > .menu__link::before {
+  left: 2rem;
+}
+.theme-doc-sidebar-item-link-level-4 .activeDescendant > .menu__link::before {
+  left: 2.75rem;
+}

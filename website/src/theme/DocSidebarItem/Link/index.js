@@ -14,6 +14,7 @@ export default function DocSidebarItemLink({
   activePath,
   level,
   index,
+  activeDescendant, // <-- new prop
   ...props
 }) {
   const {href, label, className, autoAddBaseUrl} = item;
@@ -26,6 +27,9 @@ export default function DocSidebarItemLink({
         ThemeClassNames.docs.docSidebarItemLinkLevel(level),
         'menu__list-item',
         className,
+        {
+          [sharedStyles.activeDescendant]: activeDescendant && level > 1, // <-- add class for active descendant at nested levels
+        }
       )}
       key={label}>
       <Link
